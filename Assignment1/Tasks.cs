@@ -202,8 +202,12 @@ namespace Assignment1
 	     */
         public class BinarySearch<T>
         {
-            // Auto implemented property
-            public List<T> SortedList { get; set; }
+            // Property
+            public List<T> SortedList
+            {
+                get { return SortedList; }
+                set { SortedList = new List<T>(value); }
+            }
 
             public int IndexOf(T t)
             {
@@ -211,7 +215,7 @@ namespace Assignment1
                 return 0;
             }
 
-            public BinarySearch(List<T> sortedList) : base()
+            public BinarySearch(List<T> sortedList)
             {
                 SortedList = sortedList;
             }
@@ -234,7 +238,7 @@ namespace Assignment1
          * @param string
          * @return
          */
-        public String ToPigLatin(string str)
+        public static string ToPigLatin(string str)
         {
             // TODO: implement this method
             return null;
@@ -256,7 +260,7 @@ namespace Assignment1
          * @param input
          * @return
          */
-        public bool IsArmstrongNumber(int input)
+        public static bool IsArmstrongNumber(int input)
         {
             // TODO: implement this method
             return false;
@@ -273,11 +277,287 @@ namespace Assignment1
          * @param l
          * @return
          */
-        public List<long> calculatePrimeFactorsOf(long l)
+        public static List<long> CalculatePrimeFactorsOf(long l)
         {
             // TODO: implement this method
             return null;
         }
+
+
+        /**
+	     * 11. Create an implementation of the rotational cipher, also sometimes called
+	     * the Caesar cipher.
+	     * 
+	     * The Caesar cipher is a simple shift cipher that relies on transposing all the
+	     * letters in the alphabet using an integer key between 0 and 26. Using a key of
+	     * 0 or 26 will always yield the same output due to modular arithmetic. The
+	     * letter is shifted for as many values as the value of the key.
+	     * 
+	     * The general notation for rotational ciphers is ROT + <key>. The most commonly
+	     * used rotational cipher is ROT13.
+	     * 
+	     * A ROT13 on the Latin alphabet would be as follows:
+	     * 
+	     * Plain: abcdefghijklmnopqrstuvwxyz Cipher: nopqrstuvwxyzabcdefghijklm It is
+	     * stronger than the Atbash cipher because it has 27 possible keys, and 25
+	     * usable keys.
+	     * 
+	     * Ciphertext is written out in the same formatting as the input including
+	     * spaces and punctuation.
+	     * 
+	     * Examples: ROT5 omg gives trl ROT0 c gives c ROT26 Cool gives Cool ROT13 The
+	     * quick brown fox jumps over the lazy dog. gives Gur dhvpx oebja sbk whzcf bire
+	     * gur ynml qbt. ROT13 Gur dhvpx oebja sbk whzcf bire gur ynml qbt. gives The
+	     * quick brown fox jumps over the lazy dog.
+	     */
+        public class RotationalCipher
+        {
+            private int key;
+
+            public RotationalCipher(int key)
+            {
+                this.key = key;
+            }
+
+            public string Rotate(String str)
+            {
+                // TODO: implement this method
+                return null;
+            }
+        }
+
+        /**
+	     * 12. Given a number n, determine what the nth prime is.
+	     * 
+	     * By listing the first six prime numbers: 2, 3, 5, 7, 11, and 13, we can see
+	     * that the 6th prime is 13.
+	     * 
+	     * If your language provides methods in the standard library to deal with prime
+	     * numbers, pretend they don't exist and implement them yourself.
+	     * 
+	     * @param i
+	     * @return
+	     */
+        public static int CalculateNthPrime(int i)
+        {
+            // TODO: implement this method
+            return 0;
+        }
+
+
+        /**
+	     * 13 & 14. Create an implementation of the atbash cipher, an ancient encryption
+	     * system created in the Middle East.
+	     * 
+	     * The Atbash cipher is a simple substitution cipher that relies on transposing
+	     * all the letters in the alphabet such that the resulting alphabet is
+	     * backwards. The first letter is replaced with the last letter, the second with
+	     * the second-last, and so on.
+	     * 
+	     * An Atbash cipher for the Latin alphabet would be as follows:
+	     * 
+	     * Plain: abcdefghijklmnopqrstuvwxyz Cipher: zyxwvutsrqponmlkjihgfedcba It is a
+	     * very weak cipher because it only has one possible key, and it is a simple
+	     * monoalphabetic substitution cipher. However, this may not have been an issue
+	     * in the cipher's time.
+	     * 
+	     * Ciphertext is written out in groups of fixed length, the traditional group
+	     * size being 5 letters, and punctuation is excluded. This is to make it harder
+	     * to guess things based on word boundaries.
+	     * 
+	     * Examples Encoding test gives gvhg Decoding gvhg gives test Decoding gsvjf
+	     * rxpyi ldmul cqfnk hlevi gsvoz abwlt gives thequickbrownfoxjumpsoverthelazydog
+	     *
+	     */
+        public class AtbashCipher
+        {
+            /// <summary>
+            /// 
+            /// Question 13
+            /// 
+            /// </summary>
+            /// <param name="str"></param>
+            /// <returns></returns>
+            public static string Encode(string str)
+            {
+                // TODO: implement this method
+                return "";
+            }
+
+            /// <summary>
+            /// 
+            /// Question 14
+            /// 
+            /// </summary>
+            /// <param name="str"></param>
+            /// <returns></returns>
+            public static string Decode(string str)
+            {
+                // TODO: implement this method
+                return "";
+            }
+        }
+
+
+        /**
+	     * 15. The ISBN-10 verification process is used to validate book identification
+	     * numbers. These normally contain dashes and look like: 3-598-21508-8
+	     * 
+	     * ISBN The ISBN-10 format is 9 digits (0 to 9) plus one check character (either
+	     * a digit or an X only). In the case the check character is an X, this
+	     * represents the value '10'. These may be communicated with or without hyphens,
+	     * and can be checked for their validity by the following formula:
+	     * 
+	     * (x1 * 10 + x2 * 9 + x3 * 8 + x4 * 7 + x5 * 6 + x6 * 5 + x7 * 4 + x8 * 3 + x9
+	     * * 2 + x10 * 1) mod 11 == 0 If the result is 0, then it is a valid ISBN-10,
+	     * otherwise it is invalid.
+	     * 
+	     * Example Let's take the ISBN-10 3-598-21508-8. We plug it in to the formula,
+	     * and get:
+	     * 
+	     * (3 * 10 + 5 * 9 + 9 * 8 + 8 * 7 + 2 * 6 + 1 * 5 + 5 * 4 + 0 * 3 + 8 * 2 + 8 *
+	     * 1) mod 11 == 0 Since the result is 0, this proves that our ISBN is valid.
+	     * 
+	     * @param string
+	     * @return
+	     */
+        public static bool IsValidIsbn(string str )
+        {
+            // TODO: implement this method
+            return false;
+        }
+
+
+        /**
+	     * 16. Determine if a sentence is a pangram. A pangram (Greek: παν γράμμα, pan
+	     * gramma, "every letter") is a sentence using every letter of the alphabet at
+	     * least once. The best known English pangram is:
+	     * 
+	     * The quick brown fox jumps over the lazy dog.
+	     * 
+	     * The alphabet used consists of ASCII letters a to z, inclusive, and is case
+	     * insensitive. Input will not contain non-ASCII symbols.
+	     * 
+	     * @param string
+	     * @return
+	     */
+        public static bool IsPangram(string str)
+        {
+            // TODO: implement this method
+
+            return false;
+        }
+
+        /**
+	     * 17. Calculate the moment when someone has lived for 10^9 seconds.
+	     * 
+	     * A gigasecond is 109 (1,000,000,000) seconds.
+	     * 
+	     * @param given
+	     * @return
+	     */
+        public static DateTime? GetGigasecondDate(DateTime given)
+        {
+            // TODO Write an implementation for this method declaration
+            return null;
+        }
+
+        /**
+         * 18. Given a number, find the sum of all the unique multiples of particular
+         * numbers up to but not including that number.
+         * 
+         * If we list all the natural numbers below 20 that are multiples of 3 or 5, we
+         * get 3, 5, 6, 9, 10, 12, 15, and 18.
+         * 
+         * The sum of these multiples is 78.
+         * 
+         * @param i
+         * @param set
+         * @return
+         */
+        public static int GetSumOfMultiples(int i, int[] set)
+        {
+            // TODO Write an implementation for this method declaration
+            return 0;
+        }
+
+
+        /**
+         * 19. Given a number determine whether or not it is valid per the Luhn formula.
+         * 
+         * The Luhn algorithm is a simple checksum formula used to validate a variety of
+         * identification numbers, such as credit card numbers and Canadian Social
+         * Insurance Numbers.
+         * 
+         * The task is to check if a given string is valid.
+         * 
+         * Validating a Number Strings of length 1 or less are not valid. Spaces are
+         * allowed in the input, but they should be stripped before checking. All other
+         * non-digit characters are disallowed.
+         * 
+         * Example 1: valid credit card number 1 4539 1488 0343 6467 The first step of
+         * the Luhn algorithm is to double every second digit, starting from the right.
+         * We will be doubling
+         * 
+         * 4_3_ 1_8_ 0_4_ 6_6_ If doubling the number results in a number greater than 9
+         * then subtract 9 from the product. The results of our doubling:
+         * 
+         * 8569 2478 0383 3437 Then sum all of the digits:
+         * 
+         * 8+5+6+9+2+4+7+8+0+3+8+3+3+4+3+7 = 80 If the sum is evenly divisible by 10,
+         * then the number is valid. This number is valid!
+         * 
+         * Example 2: invalid credit card number 1 8273 1232 7352 0569 Double the second
+         * digits, starting from the right
+         * 
+         * 7253 2262 5312 0539 Sum the digits
+         * 
+         * 7+2+5+3+2+2+6+2+5+3+1+2+0+5+3+9 = 57 57 is not evenly divisible by 10, so
+         * this number is not valid.
+         * 
+         * @param string
+         * @return
+         */
+        public static bool IsLuhnValid(string str)
+        {
+            // TODO Write an implementation for this method declaration
+            return false;
+        }
+
+
+        /**
+	     * 20. Parse and evaluate simple math word problems returning the answer as an
+	     * integer.
+	     * 
+	     * Add two numbers together.
+	     * 
+	     * What is 5 plus 13?
+	     * 
+	     * 18
+	     * 
+	     * Now, perform the other three operations.
+	     * 
+	     * What is 7 minus 5?
+	     * 
+	     * 2
+	     * 
+	     * What is 6 multiplied by 4?
+	     * 
+	     * 24
+	     * 
+	     * What is 25 divided by 5?
+	     * 
+	     * 5
+	     * 
+	     * @param string
+	     * @return
+	     */
+        public static int SolveWordProblem(string str)
+        {
+            // TODO Write an implementation for this method declaration
+            return 0;
+        }
+
 
     }
 }

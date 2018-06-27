@@ -104,7 +104,7 @@ namespace Assignment1
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
-        public int GetScrabbleScoore(string str)
+        public static int GetScrabbleScore(string str)
         {
             // TODO: implement this method
             return 0;
@@ -142,7 +142,7 @@ namespace Assignment1
 	     * Note: As this exercise only deals with telephone numbers used in
 	     * NANP-countries, only 1 is considered a valid country code.
 	     */
-        public string CleanPhoneNumber(string str)
+        public static string CleanPhoneNumber(string str)
         {
             // TODO: implement this method
             return null;
@@ -158,7 +158,7 @@ namespace Assignment1
 	     * @param string
 	     * @return
 	     */
-        public IDictionary<string, int> WordCount(string str)
+        public static IDictionary<string, int> WordCount(string str)
         {
             return null;
         }

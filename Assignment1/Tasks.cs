@@ -1,9 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Assignment1
 {
+    /** Can use these for debugging in tests **/
+    //Trace.Listeners.Add(new TextWriterTraceListener(Console.Out));
+    //Trace.WriteLine("*******" + someString + "**********");
+
     /// <summary>
     /// Contains the tasks to accomplisth.
     /// </summary>
@@ -21,8 +27,13 @@ namespace Assignment1
         /// <returns></returns>
         public static string Reverse(string str)
         {
-            // TODO: implement this method
-            return "";
+            char[] strCharArrRev = new char[str.Length];
+            for (int i = 0; i < str.Length; i++)
+            {
+                strCharArrRev[i] = str[str.Length - 1 - i];
+            }
+
+            return new string(strCharArrRev);
         }
 
 
@@ -38,8 +49,19 @@ namespace Assignment1
         /// <returns></returns>
         public static string Acronym(string phrase)
         {
-            // TODO: implement this method
-            return "";
+            StringBuilder acro = new StringBuilder();
+            string whiteSpaceRegex = @"\s+";    // Regex to match whitespaces (any number of them together)
+
+            // hyphens count as 2 words
+            string[] words = Regex.Split(phrase.Trim().Replace("-", " "), whiteSpaceRegex);
+
+            // Iterate through words and get first char
+            foreach (string word in words)
+            {
+                acro.Append(word[0]);
+            }
+
+            return acro.ToString().ToUpper();
         }
 
         /// <summary>
@@ -70,20 +92,17 @@ namespace Assignment1
 
             public bool IsEquilateral()
             {
-                // TODO: implement this method
-                return false;
+                return (SideOne == SideTwo && SideTwo == SideThree);
             }
 
             public bool IsIsosceles()
             {
-                // TODO: implement this method
-                return false;
+                return (SideOne == SideTwo || SideTwo == SideThree || SideOne == SideThree);
             }
 
             public bool IsScalene()
             {
-                // TODO: implement this method
-                return false;
+                return (SideOne != SideTwo && SideTwo != SideThree && SideOne != SideThree); ;
             }
         }
 
@@ -106,8 +125,76 @@ namespace Assignment1
         /// <returns></returns>
         public static int GetScrabbleScore(string str)
         {
-            // TODO: implement this method
-            return 0;
+            int score = 0;
+
+            for (int i = 0; i < str.Length; i++)
+            {
+                char letter = char.ToLower(str[i]);
+
+                switch (letter)
+                {
+                    case 'a':
+                    case 'e':
+                    case 'i':
+                    case 'o':
+                    case 'u':
+                    case 'l':
+                    case 'n':
+                    case 'r':
+                    case 's':
+                    case 't':
+                        {
+                            score += 1;
+                            break;
+                        }
+                    case 'd':
+                    case 'g':
+                        {
+                            int k = 0;
+                            score += 2;
+                            break;
+                        }
+
+                    case 'b':
+                    case 'c':
+                    case 'm':
+                    case 'p':
+                        {
+                            score += 3;
+                            break;
+                        }
+                    case 'f':
+                    case 'h':
+                    case 'v':
+                    case 'w':
+                    case 'y':
+                        {
+                            score += 4;
+                            break;
+                        }
+                    case 'k':
+                        {
+                            score += 5;
+                            break;
+                        }
+
+                    case 'j':
+                    case 'x':
+                        {
+                            score += 8;
+                            break;
+                        }
+
+                    case 'q':
+                    case 'z':
+                        {
+                            score += 10;
+                            break;
+                        }
+                }
+            }
+
+            return score;
         }
 
 
@@ -145,7 +232,34 @@ namespace Assignment1
         public static string CleanPhoneNumber(string str)
         {
             // TODO: implement this method
-            return null;
+            string result = str;
+
+            // Validate input
+            Match match = Regex.Match(result, @"[^\s()+0-9.-]");
+
+            // If we found non-allowed char, throw exceptions
+            if (match.Success == true)
+            {
+                throw new ArgumentException("Incorrect phone format");
+            }
+            else
+            {
+                // Remove anything thats not a number
+                string digits = Regex.Replace(result.Trim(), @"\D", "");
+
+                if (digits.Length == 11)
+                {
+                    return digits.Substring(1);
+                }
+                else if (digits.Length == 10)
+                {
+                    return digits;
+                }
+                else
+                {
+                    throw new ArgumentException("Incorrect phone format");
+                }
+            }
         }
 
 
@@ -160,7 +274,30 @@ namespace Assignment1
 	     */
         public static IDictionary<string, int> WordCount(string str)
         {
-            return null;
+            IDictionary<string, int> wordCount = new Dictionary<string, int>();
+
+            // Sanitize input
+
+            // Remove newlines from a string
+            string oneLine = str.Replace(Environment.NewLine, "").Replace("\n", "");
+
+            // Remove punctaion and split on words
+            string[] words = Regex.Replace(oneLine.Trim(), @"[^\sa-zA-Z,]", "").Split(new[] { ',', ' ' });
+            
+            foreach (string word in words)
+            {
+                // Word already in dictionary, increment it
+                if (wordCount.ContainsKey(word))
+                {
+                    wordCount[word] += 1;
+                }
+                else
+                {
+                    wordCount.Add(word, 1);
+                }
+            }
+
+            return wordCount;
         }
 
 

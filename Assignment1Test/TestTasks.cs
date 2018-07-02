@@ -177,9 +177,9 @@ namespace Assignment1Test
             Assert.Equal(41, Tasks.GetScrabbleScore("OxyphenButazone"));
         }
 
-        ///*******************************************************************
-        //* Task 5
-        //******************************************************************/
+        /*******************************************************************
+        * Task 5
+        ******************************************************************/
 
         [Fact]
         public void CleansTheNumber()
@@ -295,537 +295,539 @@ namespace Assignment1Test
         }
 
 
-        ///*******************************************************************
-        //     * Question 7
-        //     ******************************************************************/
-        //[Fact]
-        //public void findsAValueInTheMiddleOfAnArray()
-        //{
-        //    List<string> sortedList = new List<string>() { "1", "3", "4", "6", "8", "9", "11" };
-        //    Tasks.BinarySearch<string> search = new Tasks.BinarySearch<string>(sortedList);
+        /*******************************************************************
+         * Question 7
+         ******************************************************************/
 
-        //    Assert.Equal(3, search.IndexOf("6"));
-        //}
+        [Fact]
+        public void FindsAValueInTheMiddleOfAnArray()
+        {
+            List<string> sortedList = new List<string>() { "1", "3", "4", "6", "8", "9", "11" };
+            Tasks.BinarySearch<string> search = new Tasks.BinarySearch<string>(sortedList);
 
-        //[Fact]
-        //public void findsAValueAtTheBeginningOfAnArray()
-        //{
-        //    List<int> sortedList = new List<int>() { 1, 3, 4, 6, 8, 9, 11 };
-        //    Tasks.BinarySearch<int> search = new Tasks.BinarySearch<int>(sortedList);
+            Assert.Equal(3, search.IndexOf("6"));
+        }
 
-        //    Assert.Equal(0, search.IndexOf(1));
-        //}
+        [Fact]
+        public void FindsAValueAtTheBeginningOfAnArray()
+        {
+            List<int> sortedList = new List<int>() { 1, 3, 4, 6, 8, 9, 11 };
+            Tasks.BinarySearch<int> search = new Tasks.BinarySearch<int>(sortedList);
 
-        //[Fact]
-        //public void findsAValueAtTheEndOfAnArray()
-        //{
-        //    List<int> sortedList = new List<int>() { 1, 3, 4, 6, 8, 9, 11 };
-        //    Tasks.BinarySearch<int> search = new Tasks.BinarySearch<int>(sortedList);
+            Assert.Equal(0, search.IndexOf(1));
+        }
 
-        //    Assert.Equal(6, search.IndexOf(11));
-        //}
+        [Fact]
+        public void FindsAValueAtTheEndOfAnArray()
+        {
+            List<int> sortedList = new List<int>() { 1, 3, 4, 6, 8, 9, 11 };
+            Tasks.BinarySearch<int> search = new Tasks.BinarySearch<int>(sortedList);
 
-        //[Fact]
-        //public void findsAValueInAnArrayOfOddLength()
-        //{
-        //    List<int> sortedListOfOddLength = new List<int>() { 1, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 634 };
-        //    Tasks.BinarySearch<int> search = new Tasks.BinarySearch<int>(sortedListOfOddLength);
+            Assert.Equal(6, search.IndexOf(11));
+        }
 
-        //    Assert.Equal(9, search.IndexOf(144));
-        //}
+        [Fact]
+        public void FindsAValueInAnArrayOfOddLength()
+        {
+            List<int> sortedListOfOddLength = new List<int>() { 1, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 634 };
+            Tasks.BinarySearch<int> search = new Tasks.BinarySearch<int>(sortedListOfOddLength);
 
-        //[Fact]
-        //public void findsAValueInAnArrayOfEvenLength()
-        //{
-        //    List<int> sortedListOfEvenLength = new List<int>() { 1, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377 };
-        //    Tasks.BinarySearch<int> search = new Tasks.BinarySearch<int>(sortedListOfEvenLength);
+            Assert.Equal(9, search.IndexOf(144));
+        }
 
-        //    Assert.Equal(5, search.IndexOf(21));
-        //}
+        [Fact]
+        public void FindsAValueInAnArrayOfEvenLength()
+        {
+            List<int> sortedListOfEvenLength = new List<int>() { 1, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377 };
+            Tasks.BinarySearch<int> search = new Tasks.BinarySearch<int>(sortedListOfEvenLength);
 
-        ///*******************************************************************
-        // * Question 8
-        // ******************************************************************/
+            Assert.Equal(5, search.IndexOf(21));
+        }
 
-        //[Fact]
-        //public void testWordBeginningWithA()
-        //{
-        //    Assert.Equal("appleay", Tasks.ToPigLatin("apple"));
-        //}
+        /*******************************************************************
+         * Question 8
+         ******************************************************************/
 
-        //[Fact]
-        //public void testThTreatedLikeAConsonantAtTheBeginningOfAWord()
-        //{
-        //    Assert.Equal("erapythay", Tasks.ToPigLatin("therapy"));
-        //}
+        [Fact]
+        public void TestWordBeginningWithA()
+        {
+            Assert.Equal("appleay", Tasks.ToPigLatin("apple"));
+        }
 
-        //[Fact]
-        //public void testSchTreatedLikeAConsonantAtTheBeginningOfAWord()
-        //{
-        //    Assert.Equal("oolschay", Tasks.ToPigLatin("school"));
-        //}
+        [Fact]
+        public void TestThTreatedLikeAConsonantAtTheBeginningOfAWord()
+        {
+            Assert.Equal("erapythay", Tasks.ToPigLatin("therapy"));
+        }
 
-        //[Fact]
-        //public void testYTreatedLikeAConsonantAtTheBeginningOfAWord()
-        //{
-        //    Assert.Equal("ellowyay", Tasks.ToPigLatin("yellow"));
-        //}
+        [Fact]
+        public void TestSchTreatedLikeAConsonantAtTheBeginningOfAWord()
+        {
+            Assert.Equal("oolschay", Tasks.ToPigLatin("school"));
+        }
 
-        //[Fact]
-        //public void testAWholePhrase()
-        //{
-        //    Assert.Equal("ickquay astfay unray", Tasks.ToPigLatin("quick fast run"));
-        //}
+        [Fact]
+        public void TestYTreatedLikeAConsonantAtTheBeginningOfAWord()
+        {
+            Assert.Equal("ellowyay", Tasks.ToPigLatin("yellow"));
+        }
 
-        ///*******************************************************************
-        // * Question 9
-        // ******************************************************************/
+        [Fact]
+        public void TestAWholePhrase()
+        {
+            Assert.Equal("ickquay astfay unray", Tasks.ToPigLatin("quick fast run"));
+        }
 
-        //[Fact]
-        //public void singleDigitsAreArmstrongNumbers()
-        //{
-        //    int input = 5;
+        /*******************************************************************
+         * Question 9
+         ******************************************************************/
 
-        //    Assert.True(Tasks.IsArmstrongNumber(input));
-        //}
+        [Fact]
+        public void SingleDigitsAreArmstrongNumbers()
+        {
+            int input = 5;
 
-        //[Fact]
-        //public void noTwoDigitArmstrongNumbers()
-        //{
-        //    int input = 10;
+            Assert.True(Tasks.IsArmstrongNumber(input));
+        }
 
-        //    Assert.False(Tasks.IsArmstrongNumber(input));
-        //}
+        [Fact]
+        public void NoTwoDigitArmstrongNumbers()
+        {
+            int input = 10;
 
-        //[Fact]
-        //public void threeDigitNumberIsArmstrongNumber()
-        //{
-        //    int input = 153;
+            Assert.False(Tasks.IsArmstrongNumber(input));
+        }
 
-        //    Assert.True(Tasks.IsArmstrongNumber(input));
-        //}
+        [Fact]
+        public void ThreeDigitNumberIsArmstrongNumber()
+        {
+            int input = 153;
 
-        //[Fact]
-        //public void threeDigitNumberIsNotArmstrongNumber()
-        //{
-        //    int input = 100;
+            Assert.True(Tasks.IsArmstrongNumber(input));
+        }
 
-        //    Assert.False(Tasks.IsArmstrongNumber(input));
-        //}
+        [Fact]
+        public void ThreeDigitNumberIsNotArmstrongNumber()
+        {
+            int input = 100;
 
-        //[Fact]
-        //public void fourDigitNumberIsArmstrongNumber()
-        //{
-        //    int input = 9474;
+            Assert.False(Tasks.IsArmstrongNumber(input));
+        }
 
-        //    Assert.True(Tasks.IsArmstrongNumber(input));
-        //}
+        [Fact]
+        public void FourDigitNumberIsArmstrongNumber()
+        {
+            int input = 9474;
+
+            Assert.True(Tasks.IsArmstrongNumber(input));
+        }
 
         ///*******************************************************************
         // * Question 10
         // ******************************************************************/
 
-        //[Fact]
-        //public void testPrimeNumber()
-        //{
-        //    Assert.Equal(new List<long> { 2L }, Tasks.CalculatePrimeFactorsOf(2L));
-        //}
-
-        //[Fact]
-        //public void testSquareOfAPrime()
-        //{
-        //    Assert.Equal(new List<long> { 3L, 3L }, Tasks.CalculatePrimeFactorsOf(9L));
-        //}
-
-        //[Fact]
-        //public void testCubeOfAPrime()
-        //{
-        //    Assert.Equal(new List<long> { 2L, 2L, 2L }, Tasks.CalculatePrimeFactorsOf(8L));
-        //}
-
-        //[Fact]
-        //public void testProductOfPrimesAndNonPrimes()
-        //{
-        //    Assert.Equal(new List<long> { 2L, 2L, 3L }, Tasks.CalculatePrimeFactorsOf(12L));
-        //}
-
-        //[Fact]
-        //public void testProductOfPrimes()
-        //{
-        //    Assert.Equal(new List<long> { 5L, 17L, 23L, 461L }, Tasks.CalculatePrimeFactorsOf(901255L));
-        //}
-
-        ///*******************************************************************
-        // * Question 11
-        // ******************************************************************/
-
-        //[Fact]
-        //public void RotateSingleCharacterWithWrapAround()
-        //{
-        //    Tasks.RotationalCipher rotationalCipher = new Tasks.RotationalCipher(13);
-        //    Assert.Equal("a", rotationalCipher.Rotate("n"));
-        //}
-
-        //[Fact]
-        //public void RotateCapitalLetters()
-        //{
-        //    Tasks.RotationalCipher rotationalCipher = new Tasks.RotationalCipher(5);
-        //    Assert.Equal("TRL", rotationalCipher.Rotate("OMG"));
-        //}
-
-        //[Fact]
-        //public void RotateNumbers()
-        //{
-        //    Tasks.RotationalCipher rotationalCipher = new Tasks.RotationalCipher(4);
-        //    Assert.Equal("Xiwxmrk 1 2 3 xiwxmrk", rotationalCipher.Rotate("Testing 1 2 3 testing"));
-        //}
-
-        //[Fact]
-        //public void RotatePunctuation()
-        //{
-        //    Tasks.RotationalCipher rotationalCipher = new Tasks.RotationalCipher(21);
-        //    Assert.Equal("Gzo'n zvo, Bmviyhv!", rotationalCipher.Rotate("Let's eat, Grandma!"));
-        //}
-
-        //[Fact]
-        //public void RotateAllLetters()
-        //{
-        //    Tasks.RotationalCipher rotationalCipher = new Tasks.RotationalCipher(13);
-        //    Assert.Equal("The quick brown fox jumps over the lazy dog.",
-        //            rotationalCipher.Rotate("Gur dhvpx oebja sbk whzcf bire gur ynml qbt."));
-        //}
-
-        ///*******************************************************************
-        // * Question 12
-        // ******************************************************************/
-
-        //[Fact]
-        //public void TestFirstPrime()
-        //{
-        //    Assert.Equal(2, Tasks.CalculateNthPrime(1));
-        //}
-
-        //[Fact]
-        //public void TestSecondPrime()
-        //{
-        //    Assert.Equal(3, Tasks.CalculateNthPrime(2));
-        //}
-
-        //[Fact]
-        //public void TestSixthPrime()
-        //{
-        //    Assert.Equal(13, Tasks.CalculateNthPrime(6));
-        //}
-
-        //[Fact]
-        //public void TestBigPrime()
-        //{
-        //    Assert.Equal(104743, Tasks.CalculateNthPrime(10001));
-        //}
-
-        //[Fact]
-        //public void TestUndefinedPrime()
-        //{
-        //    Assert.Throws<ArgumentException>(() => Tasks.CalculateNthPrime(0));
-        //}
-
-        ///*******************************************************************
-        // * Question 13
-        // ******************************************************************/
-
-        //[Fact]
-        //public void TestEncodeYes()
-        //{
-        //    Assert.Equal("bvh", Tasks.AtbashCipher.Encode("yes"));
-        //}
-
-        //[Fact]
-        //public void TestEncodeOmgInCapital()
-        //{
-        //    Assert.Equal("lnt", Tasks.AtbashCipher.Encode("OMG"));
-        //}
-
-        //[Fact]
-        //public void TestEncodeMindBlowingly()
-        //{
-        //    Assert.Equal("nrmwy oldrm tob", Tasks.AtbashCipher.Encode("mindblowingly"));
-        //}
-
-        //[Fact]
-        //public void TestEncodeNumbers()
-        //{
-        //    Assert.Equal("gvhgr mt123 gvhgr mt", Tasks.AtbashCipher.Encode("Testing,1 2 3, testing."));
-        //}
-
-        //[Fact]
-        //public void TestEncodeDeepThought()
-        //{
-        //    Assert.Equal("gifgs rhurx grlm", Tasks.AtbashCipher.Encode("Truth is fiction."));
-        //}
-
-        //[Fact]
-        //public void TestEncodeAllTheLetters()
-        //{
-        //    Assert.Equal("gsvjf rxpyi ldmul cqfnk hlevi gsvoz abwlt",
-        //            Tasks.AtbashCipher.Encode("The quick brown fox jumps over the lazy dog."));
-        //}
-
-        ///*******************************************************************
-        // * Question 14
-        // ******************************************************************/
-        //[Fact]
-        //public void testDecodeExercism()
-        //{
-        //    Assert.Equal("exercism", Tasks.AtbashCipher.Decode("vcvix rhn"));
-        //}
-
-        //[Fact]
-        //public void testDecodeASentence()
-        //{
-        //    Assert.Equal("anobstacleisoftenasteppingstone",
-        //            Tasks.AtbashCipher.Decode("zmlyh gzxov rhlug vmzhg vkkrm thglm v"));
-        //}
-
-        //[Fact]
-        //public void testDecodeNumbers()
-        //{
-        //    Assert.Equal("testing123testing", Tasks.AtbashCipher.Decode("gvhgr mt123 gvhgr mt"));
-        //}
-
-        //[Fact]
-        //public void testDecodeAllTheLetters()
-        //{
-        //    Assert.Equal("thequickbrownfoxjumpsoverthelazydog",
-        //            Tasks.AtbashCipher.Decode("gsvjf rxpyi ldmul cqfnk hlevi gsvoz abwlt"));
-        //}
-
-        ///*******************************************************************
-        // * Question 15
-        // ******************************************************************/
-
-        //[Fact]
-        //public void ValidIsbnNumber()
-        //{
-        //    Assert.True(Tasks.IsValidIsbn("3-598-21508-8"));
-        //}
-
-        //[Fact]
-        //public void InvalidIsbnCheckDigit()
-        //{
-        //    Assert.False(Tasks.IsValidIsbn("3-598-21508-9"));
-        //}
-
-        //[Fact]
-        //public void ValidIsbnNumberWithCheckDigitOfTen()
-        //{
-        //    Assert.True(Tasks.IsValidIsbn("3-598-21507-X"));
-        //}
-
-        //[Fact]
-        //public void CheckDigitIsACharacterOtherThanX()
-        //{
-        //    Assert.False(Tasks.IsValidIsbn("3-598-21507-A"));
-        //}
-
-        //[Fact]
-        //public void InvalidCharacterInIsbn()
-        //{
-        //    Assert.False(Tasks.IsValidIsbn("3-598-2K507-0"));
-        //}
-
-        ///*******************************************************************
-        // * Question 16
-        // ******************************************************************/
-
-        //[Fact]
-        //public void emptySentenceIsNotPangram()
-        //{
-        //    Assert.False(Tasks.IsPangram(""));
-        //}
-
-        //[Fact]
-        //public void recognizesPerfectLowerCasePangram()
-        //{
-        //    Assert.True(Tasks.IsPangram("abcdefghijklmnopqrstuvwxyz"));
-        //}
-
-        //[Fact]
-        //public void pangramWithOnlyLowerCaseLettersIsRecognizedAsPangram()
-        //{
-        //    Assert.True(Tasks.IsPangram("the quick brown fox jumps over the lazy dog"));
-        //}
-
-        //[Fact]
-        //public void phraseMissingCharacterXIsNotPangram()
-        //{
-        //    Assert.False(Tasks.IsPangram("a quick movement of the enemy will jeopardize five gunboats"));
-        //}
-
-        //[Fact]
-        //public void phraseMissingAnotherCharacterIsNotPangram()
-        //{
-        //    Assert.False(Tasks.IsPangram("five boxing wizards jump quickly at it"));
-        //}
-
-        ///*******************************************************************
-        // * Question 17
-        // ******************************************************************/
-        //[Fact]
-        //public void ModernTime()
-        //{
-        //    Assert.Equal(new DateTime(2043, 1, 1, 1, 46, 40),
-        //            Tasks.GetGigasecondDate(new DateTime(2011, 4, 25)));
-        //}
-
-        //[Fact]
-        //public void AfterEpochTime()
-        //{
-        //    Assert.Equal(new DateTime(2009, 2, 19, 1, 46, 40),
-        //            Tasks.GetGigasecondDate(new DateTime(1977, 6, 13)));
-        //}
-
-        //[Fact]
-        //public void BeforeEpochTime()
-        //{
-        //    Assert.Equal(new DateTime(1991, 3, 27, 1, 46, 40),
-        //            Tasks.GetGigasecondDate(new DateTime(1959, 7, 19)));
-        //}
-
-        //[Fact]
-        //public void WithFullTimeSpecified()
-        //{
-        //    Assert.Equal(new DateTime(2046, 10, 2, 23, 46, 40),
-        //            Tasks.GetGigasecondDate(new DateTime(2015, 1, 24, 22, 0, 0)));
-        //}
-
-        //[Fact]
-        //public void WithFullTimeSpecifiedAndDayRollover()
-        //{
-        //    Assert.Equal(new DateTime(2046, 10, 3, 1, 46, 39),
-        //            Tasks.GetGigasecondDate(new DateTime(2015, 1, 24, 23, 59, 59)));
-        //}
-
-        ///*******************************************************************
-        // * Question 18
-        // ******************************************************************/
-
-        //[Fact]
-        //public void TestSumOfMultiplesOf4and6UpToFifteen()
-        //{
-
-        //    int[] set = { 4, 6 };
-        //    int output = Tasks.GetSumOfMultiples(15, set);
-        //    Assert.Equal(30, output);
-
-        //}
-
-        //[Fact]
-        //public void TestSumOfMultiplesOf5and6and8UpToOneHundredFifty()
-        //{
-
-        //    int[] set = { 5, 6, 8 };
-        //    int output = Tasks.GetSumOfMultiples(150, set);
-        //    Assert.Equal(4419, output);
-
-        //}
-
-        //[Fact]
-        //public void TestSumOfMultiplesOf5and25UpToFiftyOne()
-        //{
-
-        //    int[] set = { 5, 25 };
-        //    int output = Tasks.GetSumOfMultiples(51, set);
-        //    Assert.Equal(275, output);
-
-        //}
-
-        //[Fact]
-        //public void TestSumOfMultiplesOf43and47UpToTenThousand()
-        //{
-
-        //    int[] set = { 43, 47 };
-        //    int output = Tasks.GetSumOfMultiples(10000, set);
-        //    Assert.Equal(2203160, output);
-
-        //}
-
-        //[Fact]
-        //public void TestSumOfMultiplesOfOneUpToOneHundred()
-        //{
-
-        //    int[] set = { 1 };
-        //    int output = Tasks.GetSumOfMultiples(100, set);
-        //    Assert.Equal(4950, output);
-
-        //}
-
-        ///*******************************************************************
-        // * Question 19
-        // ******************************************************************/
-
-        //[Fact]
-        //public void TestThatAValidCanadianSocialInsuranceNumberIsIdentifiedAsValidV1()
-        //{
-        //    Assert.True(Tasks.IsLuhnValid("046 454 286"));
-        //}
-
-        //[Fact]
-        //public void TestThatAnInvalidCanadianSocialInsuranceNumberIsIdentifiedAsInvalid()
-        //{
-        //    Assert.False(Tasks.IsLuhnValid("046 454 287"));
-        //}
-
-        //[Fact]
-        //public void TestThatAnInvalidCreditCardIsIdentifiedAsInvalid()
-        //{
-        //    Assert.False(Tasks.IsLuhnValid("8273 1232 7352 0569"));
-        //}
-
-        //[Fact]
-        //public void TestThatAddingANonDigitCharacterToAValidstringInvalidatesThestring()
-        //{
-        //    Assert.False(Tasks.IsLuhnValid("046a 454 286"));
-        //}
-
-        //[Fact]
-        //public void TestThatstringContainingPunctuationIsInvalid()
-        //{
-        //    Assert.False(Tasks.IsLuhnValid("055-444-285"));
-        //}
-
-        ///*******************************************************************
-        // * Question 20
-        // ******************************************************************/
-
-        //[Fact]
-        //public void testSingleAddition1()
-        //{
-        //    Assert.Equal(2, Tasks.SolveWordProblem("What is 1 plus 1?"));
-        //}
-
-        //[Fact]
-        //public void testSingleAdditionWithNegativeNumbers()
-        //{
-        //    Assert.Equal(-11, Tasks.SolveWordProblem("What is -1 plus -10?"));
-        //}
-
-        //[Fact]
-        //public void testSingleSubtraction()
-        //{
-        //    Assert.Equal(16, Tasks.SolveWordProblem("What is 4 minus -12?"));
-        //}
-
-        //[Fact]
-        //public void testSingleMultiplication()
-        //{
-        //    Assert.Equal(-75, Tasks.SolveWordProblem("What is -3 multiplied by 25?"));
-        //}
-
-        //[Fact]
-        //public void testSingleDivision()
-        //{
-        //    Assert.Equal(-11, Tasks.SolveWordProblem("What is 33 divided by -3?"));
-        //}
+        [Fact]
+        public void TestPrimeNumber()
+        {
+            Assert.Equal(new List<long> { 2L }, Tasks.CalculatePrimeFactorsOf(2L));
+        }
+
+        [Fact]
+        public void TestSquareOfAPrime()
+        {
+            Assert.Equal(new List<long> { 3L, 3L }, Tasks.CalculatePrimeFactorsOf(9L));
+        }
+
+        [Fact]
+        public void TestCubeOfAPrime()
+        {
+            Assert.Equal(new List<long> { 2L, 2L, 2L }, Tasks.CalculatePrimeFactorsOf(8L));
+        }
+
+        [Fact]
+        public void TestProductOfPrimesAndNonPrimes()
+        {
+            Assert.Equal(new List<long> { 2L, 2L, 3L }, Tasks.CalculatePrimeFactorsOf(12L));
+        }
+
+        [Fact]
+        public void TestProductOfPrimes()
+        {
+            Assert.Equal(new List<long> { 5L, 17L, 23L, 461L }, Tasks.CalculatePrimeFactorsOf(901255L));
+        }
+
+        /*******************************************************************
+         * Question 11
+         ******************************************************************/
+
+        [Fact]
+        public void RotateSingleCharacterWithWrapAround()
+        {
+            Tasks.RotationalCipher rotationalCipher = new Tasks.RotationalCipher(13);
+            Assert.Equal("a", rotationalCipher.Rotate("n"));
+        }
+
+        [Fact]
+        public void RotateCapitalLetters()
+        {
+            Tasks.RotationalCipher rotationalCipher = new Tasks.RotationalCipher(5);
+            Assert.Equal("TRL", rotationalCipher.Rotate("OMG"));
+        }
+
+        [Fact]
+        public void RotateNumbers()
+        {
+            Tasks.RotationalCipher rotationalCipher = new Tasks.RotationalCipher(4);
+            Assert.Equal("Xiwxmrk 1 2 3 xiwxmrk", rotationalCipher.Rotate("Testing 1 2 3 testing"));
+        }
+
+        [Fact]
+        public void RotatePunctuation()
+        {
+            Tasks.RotationalCipher rotationalCipher = new Tasks.RotationalCipher(21);
+            Assert.Equal("Gzo'n zvo, Bmviyhv!", rotationalCipher.Rotate("Let's eat, Grandma!"));
+        }
+
+        [Fact]
+        public void RotateAllLetters()
+        {
+            Tasks.RotationalCipher rotationalCipher = new Tasks.RotationalCipher(13);
+            Assert.Equal("The quick brown fox jumps over the lazy dog.",
+                    rotationalCipher.Rotate("Gur dhvpx oebja sbk whzcf bire gur ynml qbt."));
+        }
+
+        /*******************************************************************
+         * Question 12
+         ******************************************************************/
+
+        [Fact]
+        public void TestFirstPrime()
+        {
+            Assert.Equal(2, Tasks.CalculateNthPrime(1));
+        }
+
+        [Fact]
+        public void TestSecondPrime()
+        {
+            Assert.Equal(3, Tasks.CalculateNthPrime(2));
+        }
+
+        [Fact]
+        public void TestSixthPrime()
+        {
+            Assert.Equal(13, Tasks.CalculateNthPrime(6));
+        }
+
+        [Fact]
+        public void TestBigPrime()
+        {
+            Assert.Equal(104743, Tasks.CalculateNthPrime(10001));
+        }
+
+        [Fact]
+        public void TestUndefinedPrime()
+        {
+            Assert.Throws<ArgumentException>(() => Tasks.CalculateNthPrime(0));
+        }
+
+        /*******************************************************************
+         * Question 13
+         ******************************************************************/
+
+        [Fact]
+        public void TestEncodeYes()
+        {
+            Assert.Equal("bvh", Tasks.AtbashCipher.Encode("yes"));
+        }
+
+        [Fact]
+        public void TestEncodeOmgInCapital()
+        {
+            Assert.Equal("lnt", Tasks.AtbashCipher.Encode("OMG"));
+        }
+
+        [Fact]
+        public void TestEncodeMindBlowingly()
+        {
+            Assert.Equal("nrmwy oldrm tob", Tasks.AtbashCipher.Encode("mindblowingly"));
+        }
+
+        [Fact]
+        public void TestEncodeNumbers()
+        {
+            Assert.Equal("gvhgr mt123 gvhgr mt", Tasks.AtbashCipher.Encode("Testing,1 2 3, testing."));
+        }
+
+        [Fact]
+        public void TestEncodeDeepThought()
+        {
+            Assert.Equal("gifgs rhurx grlm", Tasks.AtbashCipher.Encode("Truth is fiction."));
+        }
+
+        [Fact]
+        public void TestEncodeAllTheLetters()
+        {
+            Assert.Equal("gsvjf rxpyi ldmul cqfnk hlevi gsvoz abwlt",
+                    Tasks.AtbashCipher.Encode("The quick brown fox jumps over the lazy dog."));
+        }
+
+        /*******************************************************************
+         * Question 14
+         ******************************************************************/
+        [Fact]
+        public void testDecodeExercism()
+        {
+            Assert.Equal("exercism", Tasks.AtbashCipher.Decode("vcvix rhn"));
+        }
+
+        [Fact]
+        public void testDecodeASentence()
+        {
+            Assert.Equal("anobstacleisoftenasteppingstone",
+                    Tasks.AtbashCipher.Decode("zmlyh gzxov rhlug vmzhg vkkrm thglm v"));
+        }
+
+        [Fact]
+        public void testDecodeNumbers()
+        {
+            Assert.Equal("testing123testing", Tasks.AtbashCipher.Decode("gvhgr mt123 gvhgr mt"));
+        }
+
+        [Fact]
+        public void testDecodeAllTheLetters()
+        {
+            Assert.Equal("thequickbrownfoxjumpsoverthelazydog",
+                    Tasks.AtbashCipher.Decode("gsvjf rxpyi ldmul cqfnk hlevi gsvoz abwlt"));
+        }
+
+        /*******************************************************************
+         * Question 15
+         ******************************************************************/
+
+        [Fact]
+        public void ValidIsbnNumber()
+        {
+            Assert.True(Tasks.IsValidIsbn("3-598-21508-8"));
+        }
+
+        [Fact]
+        public void InvalidIsbnCheckDigit()
+        {
+            Assert.False(Tasks.IsValidIsbn("3-598-21508-9"));
+        }
+
+        [Fact]
+        public void ValidIsbnNumberWithCheckDigitOfTen()
+        {
+            bool result = Tasks.IsValidIsbn("3-598-21507-X");
+            Assert.True(Tasks.IsValidIsbn("3-598-21507-X"));
+        }
+
+        [Fact]
+        public void CheckDigitIsACharacterOtherThanX()
+        {
+            Assert.False(Tasks.IsValidIsbn("3-598-21507-A"));
+        }
+
+        [Fact]
+        public void InvalidCharacterInIsbn()
+        {
+            Assert.False(Tasks.IsValidIsbn("3-598-2K507-0"));
+        }
+
+        /*******************************************************************
+         * Question 16
+         ******************************************************************/
+
+        [Fact]
+        public void EmptySentenceIsNotPangram()
+        {
+            Assert.False(Tasks.IsPangram(""));
+        }
+
+        [Fact]
+        public void RecognizesPerfectLowerCasePangram()
+        {
+            Assert.True(Tasks.IsPangram("abcdefghijklmnopqrstuvwxyz"));
+        }
+
+        [Fact]
+        public void PangramWithOnlyLowerCaseLettersIsRecognizedAsPangram()
+        {
+            Assert.True(Tasks.IsPangram("the quick brown fox jumps over the lazy dog"));
+        }
+
+        [Fact]
+        public void PhraseMissingCharacterXIsNotPangram()
+        {
+            Assert.False(Tasks.IsPangram("a quick movement of the enemy will jeopardize five gunboats"));
+        }
+
+        [Fact]
+        public void PhraseMissingAnotherCharacterIsNotPangram()
+        {
+            Assert.False(Tasks.IsPangram("five boxing wizards jump quickly at it"));
+        }
+
+        /*******************************************************************
+         * Question 17
+         ******************************************************************/
+        [Fact]
+        public void ModernTime()
+        {
+            Assert.Equal(new DateTime(2043, 1, 1, 1, 46, 40),
+                    Tasks.GetGigasecondDate(new DateTime(2011, 4, 25)));
+        }
+
+        [Fact]
+        public void AfterEpochTime()
+        {
+            Assert.Equal(new DateTime(2009, 2, 19, 1, 46, 40),
+                    Tasks.GetGigasecondDate(new DateTime(1977, 6, 13)));
+        }
+
+        [Fact]
+        public void BeforeEpochTime()
+        {
+            Assert.Equal(new DateTime(1991, 3, 27, 1, 46, 40),
+                    Tasks.GetGigasecondDate(new DateTime(1959, 7, 19)));
+        }
+
+        [Fact]
+        public void WithFullTimeSpecified()
+        {
+            Assert.Equal(new DateTime(2046, 10, 2, 23, 46, 40),
+                    Tasks.GetGigasecondDate(new DateTime(2015, 1, 24, 22, 0, 0)));
+        }
+
+        [Fact]
+        public void WithFullTimeSpecifiedAndDayRollover()
+        {
+            Assert.Equal(new DateTime(2046, 10, 3, 1, 46, 39),
+                    Tasks.GetGigasecondDate(new DateTime(2015, 1, 24, 23, 59, 59)));
+        }
+
+        /*******************************************************************
+         * Question 18
+         ******************************************************************/
+
+        [Fact]
+        public void TestSumOfMultiplesOf4and6UpToFifteen()
+        {
+
+            int[] set = { 4, 6 };
+            int output = Tasks.GetSumOfMultiples(15, set);
+            Assert.Equal(30, output);
+
+        }
+
+        [Fact]
+        public void TestSumOfMultiplesOf5and6and8UpToOneHundredFifty()
+        {
+
+            int[] set = { 5, 6, 8 };
+            int output = Tasks.GetSumOfMultiples(150, set);
+            Assert.Equal(4419, output);
+
+        }
+
+        [Fact]
+        public void TestSumOfMultiplesOf5and25UpToFiftyOne()
+        {
+
+            int[] set = { 5, 25 };
+            int output = Tasks.GetSumOfMultiples(51, set);
+            Assert.Equal(275, output);
+
+        }
+
+        [Fact]
+        public void TestSumOfMultiplesOf43and47UpToTenThousand()
+        {
+
+            int[] set = { 43, 47 };
+            int output = Tasks.GetSumOfMultiples(10000, set);
+            Assert.Equal(2203160, output);
+
+        }
+
+        [Fact]
+        public void TestSumOfMultiplesOfOneUpToOneHundred()
+        {
+
+            int[] set = { 1 };
+            int output = Tasks.GetSumOfMultiples(100, set);
+            Assert.Equal(4950, output);
+
+        }
+
+        /*******************************************************************
+         * Question 19
+         ******************************************************************/
+
+        [Fact]
+        public void TestThatAValidCanadianSocialInsuranceNumberIsIdentifiedAsValidV1()
+        {
+            Assert.True(Tasks.IsLuhnValid("046 454 286"));
+        }
+
+        [Fact]
+        public void TestThatAnInvalidCanadianSocialInsuranceNumberIsIdentifiedAsInvalid()
+        {
+            Assert.False(Tasks.IsLuhnValid("046 454 287"));
+        }
+
+        [Fact]
+        public void TestThatAnInvalidCreditCardIsIdentifiedAsInvalid()
+        {
+            Assert.False(Tasks.IsLuhnValid("8273 1232 7352 0569"));
+        }
+
+        [Fact]
+        public void TestThatAddingANonDigitCharacterToAValidstringInvalidatesThestring()
+        {
+            Assert.False(Tasks.IsLuhnValid("046a 454 286"));
+        }
+
+        [Fact]
+        public void TestThatstringContainingPunctuationIsInvalid()
+        {
+            Assert.False(Tasks.IsLuhnValid("055-444-285"));
+        }
+
+        /*******************************************************************
+         * Question 20
+         ******************************************************************/
+
+        [Fact]
+        public void testSingleAddition1()
+        {
+            Assert.Equal(2, Tasks.SolveWordProblem("What is 1 plus 1?"));
+        }
+
+        [Fact]
+        public void testSingleAdditionWithNegativeNumbers()
+        {
+            Assert.Equal(-11, Tasks.SolveWordProblem("What is -1 plus -10?"));
+        }
+
+        [Fact]
+        public void testSingleSubtraction()
+        {
+            Assert.Equal(16, Tasks.SolveWordProblem("What is 4 minus -12?"));
+        }
+
+        [Fact]
+        public void testSingleMultiplication()
+        {
+            Assert.Equal(-75, Tasks.SolveWordProblem("What is -3 multiplied by 25?"));
+        }
+
+        [Fact]
+        public void testSingleDivision()
+        {
+            Assert.Equal(-11, Tasks.SolveWordProblem("What is 33 divided by -3?"));
+        }
 
     }
 }

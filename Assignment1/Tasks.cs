@@ -150,7 +150,6 @@ namespace Assignment1
                     case 'd':
                     case 'g':
                         {
-                            int k = 0;
                             score += 2;
                             break;
                         }
@@ -231,7 +230,6 @@ namespace Assignment1
 	     */
         public static string CleanPhoneNumber(string str)
         {
-            // TODO: implement this method
             string result = str;
 
             // Validate input
@@ -275,8 +273,6 @@ namespace Assignment1
         public static IDictionary<string, int> WordCount(string str)
         {
             IDictionary<string, int> wordCount = new Dictionary<string, int>();
-
-            // Sanitize input
 
             // Remove newlines from a string
             string oneLine = str.Replace(Environment.NewLine, "").Replace("\n", "");
@@ -337,24 +333,59 @@ namespace Assignment1
 	     * binary search is a dichotomic divide and conquer search algorithm.
 	     * 
 	     */
-        public class BinarySearch<T>
+        public class BinarySearch<T> where T : IComparable<T>
         {
+            private List<T> sortedList;
             // Property
             public List<T> SortedList
             {
-                get { return SortedList; }
-                set { SortedList = new List<T>(value); }
+                get { return sortedList; }
+                set
+                {
+                    // Copy list so we don't accidently modify list
+                    sortedList = new List<T>(value);
+                }
             }
 
             public int IndexOf(T t)
             {
-                // TODO: implement this method
-                return 0;
+                int leftNdx = 0;
+                int rightNdx = SortedList.Count - 1;
+                int searchLoc;
+                T value;
+
+                while (leftNdx <= rightNdx)
+                {
+                    searchLoc = leftNdx + ((rightNdx - leftNdx) / 2);
+                    value = SortedList[searchLoc];
+
+                    if (t.CompareTo(value) < 0)
+                    {
+                        // t is less than value at search location - Look to left
+                        // We subtract 1 because we know that the value at serachLoc
+                        // is not the value we are looking for so don't include it in the next
+                        // iteration.
+                        rightNdx = searchLoc - 1;
+                    }
+                    else if (t.CompareTo(value) > 0)
+                    {
+                        // t is greater than value at serach location - Look to right
+                        leftNdx = searchLoc + 1;
+                    }
+                    else
+                    {
+                        // t equals value at serach location, we are done!
+                        return searchLoc;
+                    }
+                }
+
+                return -1;
             }
 
-            public BinarySearch(List<T> sortedList)
+            public BinarySearch() { }
+            public BinarySearch(List<T> sList)
             {
-                SortedList = sortedList;
+                SortedList = sList;
             }
         }
 
@@ -377,8 +408,70 @@ namespace Assignment1
          */
         public static string ToPigLatin(string str)
         {
-            // TODO: implement this method
-            return null;
+            String AY = "ay";
+
+            List<char> vowelList = new List<char>() { 'a', 'e', 'i', 'o', 'u' };
+            string lowStr = str.ToLower();
+            string[] splitStr = lowStr.Split(" ");
+
+            // Iterate over words
+            for (int i = 0; i < splitStr.Length; i++)
+            {
+                if (vowelList.Contains(splitStr[i][0]))
+                {
+                    // We have a vowel sound
+                    splitStr[i] = splitStr[i] + AY;
+                }
+                else
+                {
+                    // We have a consonant sound
+                    int vowelNdx = -1;
+                    char[] word = splitStr[i].ToCharArray();
+
+                    
+
+                    // Find first occurance of vowel if any
+                    for (int j = 0; j < word.Length; ++j)
+                    {
+                        if (vowelList.Contains(word[j]))
+                        {
+                            // qu is an exception in pig latin
+                            if (word[j] == 'u' && j > 0 && word[j - 1] == 'q')
+                            {
+
+                            }
+                            else
+                            {
+                                vowelNdx = j;
+                                break;
+                            }
+                        }
+                    }
+
+                    // Word does actually have a vowel
+                    if (vowelNdx != -1)
+                    {
+                        string first = splitStr[i].Substring(0, vowelNdx);
+                        string last = splitStr[i].Substring(vowelNdx);
+                        splitStr[i] = last + first + AY;
+                    }
+                    else
+                    {
+                        // No vowel in word, simply add ay to end
+                        splitStr[i] = splitStr[i] + AY;
+                    }
+
+                }
+            }
+
+            // Make the new string
+            StringBuilder strBld = new StringBuilder();
+            foreach (string word in splitStr)
+            {
+                strBld.Append(word).Append(" ");
+            }
+
+            return strBld.ToString().Trim();
         }
 
 
@@ -399,7 +492,26 @@ namespace Assignment1
          */
         public static bool IsArmstrongNumber(int input)
         {
-            // TODO: implement this method
+            // Get the number of digits from input
+            char[] IndividualInts = input.ToString().ToCharArray();
+
+            // Iterate through digits and raise each to power
+            double sum = 0;
+            int numInts = IndividualInts.Length;
+            double charToDoub;
+            for (int i = 0; i < numInts; i++)
+            {
+                // Add result to sum
+                charToDoub = Char.GetNumericValue(IndividualInts[i]);
+                sum += Math.Pow(charToDoub, numInts);
+            }
+
+            // Check if sum == input
+            if (sum == input)
+            {
+                return true;
+            }
+
             return false;
         }
 
@@ -416,8 +528,39 @@ namespace Assignment1
          */
         public static List<long> CalculatePrimeFactorsOf(long l)
         {
-            // TODO: implement this method
-            return null;
+            List<long> primeFactors = new List<long>();
+
+            // Determine how many times 2 can be a factor
+            long cnt = 0;
+            while (l % 2 == 0)
+            {
+                // While input is not odd, 2 is always a factor
+                l /= 2;
+                primeFactors.Add(2L);
+            }
+
+            // Checked evens, so now check odd numbers up to the 
+            // sqrt(targetnumber). No need to check higher than that
+            // because higher is guaranteed to not be prime.
+            for (long i = 3; i <= Math.Sqrt(l); i += 2)
+            {
+                // Primes are determined by the remainder.
+                // We want duplicates so check how many times a number
+                // can be prime.
+                while (l % i == 0)
+                {
+                    primeFactors.Add(i);
+                    l /= i;
+                }
+            }
+
+            // if l is still greater than 2, l is a prime so add itself
+            if (l > 2)
+            {
+                primeFactors.Add(l);
+            }
+
+            return primeFactors;
         }
 
 
@@ -458,8 +601,30 @@ namespace Assignment1
 
             public string Rotate(String str)
             {
-                // TODO: implement this method
-                return null;
+                char[] strCharArr = str.ToCharArray();
+
+                // Iterate through each char
+                for (int i = 0; i < str.Length; i++)
+                {
+                    if (char.IsLetter(strCharArr[i]))
+                    {
+                        if (char.IsUpper(strCharArr[i]))
+                        {
+                            // Char + key, loop back if it goes out of  range.
+                            // Normalize range to 0 - 26 then see if it goes over,
+                            // when it goes over it goes to 0. Finally add 65 to get
+                            // original mapping.
+                            strCharArr[i] = (char) ( (strCharArr[i] + key - 65) % 26 + 65 );
+                        }
+                        else
+                        {
+                            // Same as above but different range for lowercase characters
+                            strCharArr[i] = (char)( (strCharArr[i] + key - 97) % 26 + 97 );
+                        }
+                    }
+                }
+
+                return new string(strCharArr);
             }
         }
 
@@ -477,8 +642,41 @@ namespace Assignment1
 	     */
         public static int CalculateNthPrime(int i)
         {
-            // TODO: implement this method
-            return 0;
+            int primeNum = 0;   // The prime number at the current primeCnt
+            int primeCnt = 0;   // The number inde of the prime
+            Boolean isPrime;
+
+            if (i < 1)
+            {
+                throw new ArgumentException();
+            }
+
+            // Its gonna find the first i primes. only store 1 prime at a time
+            for (int num = 2; primeCnt < i; num++)
+            {
+                isPrime = true;
+
+                // Check if number is prime by dividing by all possible numbers
+                // if it is ever evenly divisible by a number other than itself or 1...
+                // it is not prime
+                for (int k = 2; k < num; k++)
+                {
+                    if (num % k == 0)
+                    {
+                        isPrime = false;
+                        break;
+                    }
+                }
+
+                if (isPrime)
+                {
+                    primeCnt++;
+                    primeNum = num;
+                }
+            }
+
+
+            return primeNum;
         }
 
 
@@ -509,6 +707,18 @@ namespace Assignment1
         public class AtbashCipher
         {
             /// <summary>
+            /// Mappings for the alphabet
+            /// </summary>
+            private static readonly Dictionary<char, char> alphaMap = new Dictionary<char, char>() 
+            {
+                ['a'] = 'z', ['f'] = 'u', ['k'] = 'p', ['p'] = 'k', ['u'] = 'f', ['z'] = 'a',
+                ['b'] = 'y', ['g'] = 't', ['l'] = 'o', ['q'] = 'j', ['v'] = 'e', 
+                ['c'] = 'x', ['h'] = 's', ['m'] = 'n', ['r'] = 'i', ['w'] = 'd', 
+                ['d'] = 'w', ['i'] = 'r', ['n'] = 'm', ['s'] = 'h', ['x'] = 'c', 
+                ['e'] = 'v', ['j'] = 'q', ['o'] = 'l', ['t'] = 'g', ['y'] = 'b' 
+            };
+
+            /// <summary>
             /// 
             /// Question 13
             /// 
@@ -517,8 +727,33 @@ namespace Assignment1
             /// <returns></returns>
             public static string Encode(string str)
             {
-                // TODO: implement this method
-                return "";
+                // Convert to char array with only letters
+                char[] strChars = Regex.Replace(str, "[^A-Za-z0-9]+", "").ToLower().ToCharArray();
+
+                for (int i = 0; i < strChars.Length; i++)
+                {
+                    // Make sure we are changing alphabetical character
+                    if (alphaMap.ContainsKey(strChars[i]))
+                    {
+                        strChars[i] = alphaMap[strChars[i]];
+                    }                    
+                }
+
+
+                // Group every 5 characters into word
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < strChars.Length; i++)
+                {
+                    if (i % 5 == 0 && i != 0)
+                    {
+                        // Add a space before
+                        sb.Append(" ");
+                    }
+
+                    sb.Append(strChars[i]);
+                }
+
+                return sb.ToString();
             }
 
             /// <summary>
@@ -530,8 +765,11 @@ namespace Assignment1
             /// <returns></returns>
             public static string Decode(string str)
             {
-                // TODO: implement this method
-                return "";
+                // Why does this work? It is a simle one to one direct mapping.
+                // Mapping the resulting chars back to originals is simply done
+                // by encoding again.
+                string resultStr = AtbashCipher.Encode(str).Replace(" ", "");
+                return resultStr;
             }
         }
 
@@ -558,9 +796,51 @@ namespace Assignment1
 	     * @param string
 	     * @return
 	     */
-        public static bool IsValidIsbn(string str )
+        public static bool IsValidIsbn(string str)
         {
-            // TODO: implement this method
+            // Check inputs
+
+            if (str.Length != 13)
+            {
+                return false;
+            }
+
+            // Only last number can be x
+            MatchCollection matches = Regex.Matches(str.Substring(0, str.Length - 1), ".*[^0-9-].*");
+            if (matches.Count > 0)
+            {
+                return false;
+            }
+
+            // Make sure check character is valid
+            if (char.ToLower(str[12]) != 'x' && !char.IsDigit(str[12]))
+            {
+                return false;
+            }
+
+            // Format is valid now perform calculations
+            int sum = 0;
+            char[] chrArr = str.ToCharArray();
+
+            for (int mult = 10, i = 0; i < chrArr.Length; i++)
+            {
+                if (char.IsDigit(chrArr[i]))
+                {
+                    sum += (int) char.GetNumericValue(chrArr[i]) * mult;
+                    mult--;
+                }
+                else if (chrArr[i] == 'x' || chrArr[i] == 'X')
+                {
+                    sum += 10 * i;
+                    mult--;
+                }
+            }
+
+            if (sum % 11 == 0)
+            {
+                return true;
+            }
+
             return false;
         }
 
@@ -580,7 +860,27 @@ namespace Assignment1
 	     */
         public static bool IsPangram(string str)
         {
-            // TODO: implement this method
+            const string atoz = "abcdefghijklmnopqrstuvwxyz";
+            HashSet<char> atozSet = new HashSet<char>();
+
+            // We will use set to store the alphabet
+            for (int i = 0; i < atoz.Length; i++)
+            {
+                atozSet.Add(atoz[i]);
+            }
+
+            // Remove the character from the set if it exists.
+            string lowerStr = str.ToLower();
+            for (int i = 0; i < lowerStr.Length; i++)
+            {
+                atozSet.Remove(lowerStr[i]);
+            }
+
+            // check if the set is empty
+            if (atozSet.Count == 0)
+            {
+                return true;
+            }
 
             return false;
         }
@@ -595,8 +895,11 @@ namespace Assignment1
 	     */
         public static DateTime? GetGigasecondDate(DateTime given)
         {
-            // TODO Write an implementation for this method declaration
-            return null;
+            const long GIGASECOND = 1_000_000_000L;
+
+            DateTime dt = given.AddSeconds(GIGASECOND);
+
+            return dt;
         }
 
         /**
@@ -614,8 +917,34 @@ namespace Assignment1
          */
         public static int GetSumOfMultiples(int i, int[] set)
         {
-            // TODO Write an implementation for this method declaration
-            return 0;
+            HashSet<int> multiples = new HashSet<int>();
+            int multiple;
+            int sum = 0;
+
+            if (set.Length == 0)
+            {
+                return 0;
+            }
+
+            // For every number in the set * 2
+            for (int j = 0; j < set.Length; j++)
+            {
+                multiples.Add(set[j]);
+                multiple = set[j] * 2;
+                while (multiple < i)
+                {
+                    multiples.Add(multiple);
+                    multiple += set[j];
+                }
+            }
+
+            // Sum up the elements
+            foreach (int myInt in multiples)
+            {
+                sum += myInt;
+            }
+
+            return sum;
         }
 
 
@@ -657,7 +986,35 @@ namespace Assignment1
          */
         public static bool IsLuhnValid(string str)
         {
-            // TODO Write an implementation for this method declaration
+            int sum = 0;
+            string noSpaces = str.Replace(" ", "");
+
+            // Check for anything thats not a digit
+            if (Regex.Matches(str, ".*[^0-9].*").Count == 0)
+            {
+                return false;
+            }
+
+            // String matches format we want - perform calculation
+            for (int i = noSpaces.Length - 1, odd = 1; i >= 0; i--, odd++)
+            {
+                if (odd % 2 == 0)
+                {
+                    int doubledVal = (int) char.GetNumericValue(noSpaces[i]) * 2;
+                    if (doubledVal > 9) { doubledVal -= 9; }
+                    sum += doubledVal;
+                }
+                else
+                {
+                    sum += (int) char.GetNumericValue(noSpaces[i]);
+                }
+            }
+
+            if (sum % 10 == 0)
+            {
+                return true;
+            }
+
             return false;
         }
 
@@ -691,8 +1048,71 @@ namespace Assignment1
 	     */
         public static int SolveWordProblem(string str)
         {
-            // TODO Write an implementation for this method declaration
-            return 0;
+            int operatorFlag = -1;
+            int result = 0;
+
+            // Extract numbers from string
+            string[] words = str.Split(" ");
+            List<int> operands = new List<int>();
+
+            for (int i = 0; i < words.Length; i++)
+            {
+                if (Regex.IsMatch(words[i], @"-?[0-9]{1,}?\\?"))
+                {
+                    // Make sure number is clean of punctuation
+                    string digit = Regex.Replace(words[i], @"[\p{P}-[-]]", "");
+                    operands.Add(int.Parse(digit));
+                }
+                else if (words[i].Contains("plus"))
+                {
+                    operatorFlag = 1;
+                }
+                else if (words[i].Contains("minus"))
+                {
+                    operatorFlag = 2;
+                }
+                else if (words[i].Contains("multiplied"))
+                {
+                    operatorFlag = 3;
+                }
+                else if (words[i].Contains("divided"))
+                {
+                    operatorFlag = 4;
+                }
+            }
+
+            result = operands[0];
+            switch (operatorFlag)
+            {
+                case 1:
+                    for (int i = 1; i < operands.Count; i++)
+                    {
+                        result += operands[i];
+                    }
+                    break;
+                case 2:
+                    for (int i = 1; i < operands.Count; i++)
+                    {
+                        result -= operands[i];
+                    }
+                    break;
+                case 3:
+                    for (int i = 1; i < operands.Count; i++)
+                    {
+                        result *= operands[i];
+                    }
+                    break;
+                case 4:
+                    for (int i = 1; i < operands.Count; i++)
+                    {
+                        result /= operands[i];
+                    }
+                    break;
+                default:
+                    break;
+            }
+
+            return result;
         }
 
 
